@@ -10,6 +10,20 @@ import java.util.Date;
 
 public class Main {
 
+	public class ComparatorOfPersons implements Comparator {
+		@Override
+		public int compare(Object firstPerson, Object secondPerson) {
+			if ((firstPerson instanceof Person) && (secondPerson instanceof Person)) {
+				firstPerson = (Person) firstPerson;
+				secondPerson = (Person) secondPerson;
+			}
+			else
+				return
+
+			return 0;
+		}
+	}
+
     public static void main(String[] args) {
         /*
          * TODO(Студент): Проинициализируйте массив strings
@@ -51,7 +65,7 @@ public class Main {
          * 2. Проинициализируйте переменную sort экземпляром
          *    созданного класса.
          */
-      //  Sort sort = null;
+        Sort sort = new InsertionSort();
 
         /*
          * TODO(Студент): Проинициализируйте переменную comparator
