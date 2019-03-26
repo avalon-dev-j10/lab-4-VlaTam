@@ -1,6 +1,12 @@
 package ru.avalon.java.dev.j10.labs;
 
+import ru.avalon.java.dev.j10.labs.generator.NamesOfPerson;
+import ru.avalon.java.dev.j10.labs.generator.PersonCreator;
+import ru.avalon.java.dev.j10.labs.generator.StringCreator;
+
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 
 public class Main {
 
@@ -12,8 +18,15 @@ public class Main {
          * чтобы он содержал 20 строк, расположенных не
          * по порядку.
          */
-	    String[] strings = null;
+	    String[] strings = new String[20];
+	    for (int i = 0; i < strings.length; i++)
+	    	strings[i] = new StringCreator().next();
 
+		for (String string: strings)
+			System.out.println(string);
+
+		//Date date = new Date();
+		//System.out.println(date);
 	    /*
 	     * TODO(Студент): Проинициализируйте массив persons
 	     *
@@ -22,7 +35,13 @@ public class Main {
 	     * 2. Проинициализируйте массив persons 20
 	     *    экземплярыми созданного класса.
 	     */
-	    Person[] persons = null;
+	    Person[] persons = new RealPerson[20];
+		for (int i = 0; i < persons.length; i++)
+			persons[i] = new PersonCreator().next();
+
+
+		for (RealPerson person: (RealPerson[]) persons)
+			System.out.println(person);
 
         /*
          * TODO(Студент): Проинициализируйте переменную sort
@@ -32,7 +51,7 @@ public class Main {
          * 2. Проинициализируйте переменную sort экземпляром
          *    созданного класса.
          */
-        Sort sort = null;
+      //  Sort sort = null;
 
         /*
          * TODO(Студент): Проинициализируйте переменную comparator
@@ -44,7 +63,7 @@ public class Main {
          * 2. Проинициализируйте переменную comparator
          *    экземпляром созданного класса.
          */
-        Comparator comparator = null;
+       // Comparator comparator = null;
 
         /*
          * TODO(Студент): Отсортируйте массив persons по возрастанию
@@ -56,7 +75,7 @@ public class Main {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по возрастанию.
          */
-        sort.sort(persons);
+        //sort.sort(persons);
 
         /*
          * TODO(Студент): Отсортируйте массив strings по возрастанию
@@ -68,7 +87,7 @@ public class Main {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по возрастанию.
          */
-        sort.sort(strings);
+       // sort.sort(strings);
 
         /*
          * TODO(Студент): Отсортируйте массив strings по убыванию
@@ -79,6 +98,6 @@ public class Main {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по убыванию.
          */
-        sort.sort(strings, comparator);
+       // sort.sort(strings, comparator);
     }
 }
