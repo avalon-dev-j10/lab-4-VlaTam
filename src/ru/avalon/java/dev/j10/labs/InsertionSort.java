@@ -2,6 +2,7 @@ package ru.avalon.java.dev.j10.labs;
 
 import java.util.Comparator;
 
+// Класс реализует алгоритм сортировки массива вставками
 public class InsertionSort implements Sort {
 
     @Override
@@ -19,6 +20,8 @@ public class InsertionSort implements Sort {
                     array[j] = array[j-1];
                     array[j-1] = buffer;
                 }
+                else
+                    break;
     }
 
     @Override
@@ -30,5 +33,7 @@ public class InsertionSort implements Sort {
                     array[j] = array[j - 1];
                     array[j-1] = buffer;
                 }
+                else
+                    break;
     }
 }

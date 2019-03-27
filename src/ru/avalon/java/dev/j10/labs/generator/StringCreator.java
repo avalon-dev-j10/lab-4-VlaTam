@@ -5,15 +5,11 @@ package ru.avalon.java.dev.j10.labs.generator;
 public class StringCreator {
 
     public static String next(){
-        int sizeOfString = (int)new Random(20).next() + 1;
+        int sizeOfString = (int)new GeneratorOfPositiveLong(1,20).next();
         char[] charSequence = new char[sizeOfString];
 
         for (int i = 0; i < charSequence.length; i++) {
-            char currentSymbol = (char) new Random(255).next();
-            if ((currentSymbol >= 65) && (currentSymbol <= 90))
-                charSequence[i] = currentSymbol;
-            else
-                --i;
+            charSequence[i] = (char) new GeneratorOfPositiveLong('A','Z').next();
         }
 
         return new String(charSequence);

@@ -1,26 +1,27 @@
 package ru.avalon.java.dev.j10.labs;
 
-import ru.avalon.java.dev.j10.labs.generator.NamesOfPerson;
 import ru.avalon.java.dev.j10.labs.generator.PersonCreator;
 import ru.avalon.java.dev.j10.labs.generator.StringCreator;
-
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Date;
+
 
 public class Main {
 
-	public class ComparatorOfPersons implements Comparator {
-		@Override
-		public int compare(Object firstPerson, Object secondPerson) {
-			if ((firstPerson instanceof Person) && (secondPerson instanceof Person)) {
-				firstPerson = (Person) firstPerson;
-				secondPerson = (Person) secondPerson;
-			}
-			else
-				return
+	// Компаратор для сортировки массива по возрастанию
+	public static class AscendingSort <T extends Comparable<T>> implements Comparator<T> {
 
-			return 0;
+		@Override
+		public int compare(T firstPerson, T secondPerson) {
+			return firstPerson.compareTo(secondPerson);
+		}
+	}
+
+	// Компаратор для сортировки массива по убыванию
+	public static class DescendingSort <T extends Comparable<T>> implements Comparator<T> {
+
+		@Override
+		public int compare(T firstPerson, T secondPerson) {
+			return -firstPerson.compareTo(secondPerson);
 		}
 	}
 
@@ -32,15 +33,15 @@ public class Main {
          * чтобы он содержал 20 строк, расположенных не
          * по порядку.
          */
+
 	    String[] strings = new String[20];
 	    for (int i = 0; i < strings.length; i++)
 	    	strings[i] = new StringCreator().next();
 
-		for (String string: strings)
+		System.out.println("\t\t\tIt's random strings:");
+	    for (String string: strings)
 			System.out.println(string);
 
-		//Date date = new Date();
-		//System.out.println(date);
 	    /*
 	     * TODO(Студент): Проинициализируйте массив persons
 	     *
@@ -53,7 +54,7 @@ public class Main {
 		for (int i = 0; i < persons.length; i++)
 			persons[i] = new PersonCreator().next();
 
-
+		System.out.println("\n\t\t\tIt's random persons:");
 		for (RealPerson person: (RealPerson[]) persons)
 			System.out.println(person);
 
@@ -67,6 +68,7 @@ public class Main {
          */
         Sort sort = new InsertionSort();
 
+
         /*
          * TODO(Студент): Проинициализируйте переменную comparator
          *
@@ -77,7 +79,7 @@ public class Main {
          * 2. Проинициализируйте переменную comparator
          *    экземпляром созданного класса.
          */
-       // Comparator comparator = null;
+        Comparator comparator = new AscendingSort();
 
         /*
          * TODO(Студент): Отсортируйте массив persons по возрастанию
@@ -89,7 +91,10 @@ public class Main {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по возрастанию.
          */
-        //sort.sort(persons);
+        sort.sort(persons);
+		System.out.println("\n\t\t\tArray of persons is sorted in ascending order:");
+		for (RealPerson person: (RealPerson[]) persons)
+			System.out.println(person);
 
         /*
          * TODO(Студент): Отсортируйте массив strings по возрастанию
@@ -101,7 +106,10 @@ public class Main {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по возрастанию.
          */
-       // sort.sort(strings);
+        sort.sort(strings);
+		System.out.println("\n\t\t\tArray of strings is sorted in ascending order:");
+		for (String string: strings)
+			System.out.println(string);
 
         /*
          * TODO(Студент): Отсортируйте массив strings по убыванию
@@ -112,6 +120,9 @@ public class Main {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по убыванию.
          */
-       // sort.sort(strings, comparator);
+        sort.sort(strings, new DescendingSort());
+		System.out.println("\n\t\t\tArray of strings is sorted in descending order:");
+		for (String string: strings)
+			System.out.println(string);
     }
 }

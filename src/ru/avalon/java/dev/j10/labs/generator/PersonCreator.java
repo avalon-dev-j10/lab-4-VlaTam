@@ -5,12 +5,13 @@ import ru.avalon.java.dev.j10.labs.RealPerson;
 import java.util.Date;
 import static ru.avalon.java.dev.j10.labs.generator.NamesOfPerson.*;
 
+// Класс рандомно создает объекты класса RealPerson
 public class PersonCreator {
 
     public Person next(){
-        Random birthDayCreator = new Random(new Date().getTime());
+        GeneratorOfPositiveLong birthDayCreator = new GeneratorOfPositiveLong(0, new Date().getTime());
 
-        switch ((int)new Random(10).next()){
+        switch ((int)new GeneratorOfPositiveLong(0, 9).next()){
             case 0:
                 return new RealPerson(VLADIMIR.toString(), new Date(birthDayCreator.next()));
             case 1:
