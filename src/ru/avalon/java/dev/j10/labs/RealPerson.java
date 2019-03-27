@@ -34,15 +34,15 @@ public class RealPerson implements Person {
             return -1;
 
         if (birthDay.before(other.getBirthDate()))
-            return -1;
-        else
             return 1;
+        else
+            return -1;
     }
 
     @Override
     public String toString() {
         Formatter formatter = new Formatter();
-        formatter.format("%" + "15s\t\t\t%tF", name, birthDay);
+        formatter.format("%15s\t\t\t%tF", name, birthDay);
 
         return formatter.toString();
     }
